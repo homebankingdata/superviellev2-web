@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-    baseURL: `http://ec2-3-135-230-168.us-east-2.compute.amazonaws.com:8080`,
+    baseURL: `https://homebankingdata-env.eba-3kpvtenj.us-east-2.elasticbeanstalk.com`,
     headers: {
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         'Access-Control-Allow-Origin': '*'
