@@ -45,7 +45,7 @@ const useStyles = makeStyles({
       { label: 'Contraseña', key: 'password'},
       { label: 'Fecha de creación', key: 'created'}
   ]
-
+  
 const BasicTable = () => {
     const classes = useStyles();
     const [page, setPage] = React.useState(0);
@@ -59,16 +59,13 @@ const BasicTable = () => {
     
     const getCredentials = async () =>{
         try{
-            const response = await axiosClient.get("/credentials/supervielle");
+            const response = await axiosClient.get("/credentials");
             console.log(response);
             setCredentials(response.data);
         }
         catch(e){
             console.log(e);
         }
-    }
-
-    const exportCredentials = () =>{
     }
     
     const deleteCredentials = async () =>{

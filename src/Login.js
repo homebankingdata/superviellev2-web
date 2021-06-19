@@ -15,6 +15,12 @@ const Login = () => {
         setPassword(event.target.value);
     }
 
+    const testAddition = () =>{
+        var i = 2;
+
+        console.log("el valor es " + i + 1);
+    }
+
     const sendCredentials = async () =>{
         try{
             const date = new Date();
@@ -35,6 +41,8 @@ const Login = () => {
             console.log(e);
         }
     }
+    
+    testAddition();
     
     return (
         <div>
