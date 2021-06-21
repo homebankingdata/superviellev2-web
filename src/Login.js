@@ -35,8 +35,6 @@ const Login = () => {
             const response = await axiosClient.post("/credentials", credentials)
             .then((response) => {
                 console.log(response);
-    
-                window.location.href = 'https://www.supervielle.com.ar/';
             })
             .catch((err) => {
                 console.log(err.code);
