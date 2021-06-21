@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-    baseURL: `https://api.saludesvida.co`,
+    baseURL: `http://api.saludesvida.co`,
     headers: {
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
         'Access-Control-Allow-Origin': '*'
