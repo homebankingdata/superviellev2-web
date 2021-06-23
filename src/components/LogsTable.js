@@ -13,7 +13,9 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
 import { Button, Row } from 'react-bootstrap';
 import { CSVLink } from 'react-csv';
+import firebase from "../firebase"
 
+const collection = firebase.firestore().collection("credentials");
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -59,9 +61,14 @@ const BasicTable = () => {
     
     const getCredentials = async () =>{
         try{
-            const response = await axiosClient.get("/credentials");
+            collection.get().then((item) => {
+                const items = item.docs.map((doc) => doc.data());
+                console.log(items);
+                setCredentials(items);
+            })
+            /*const response = await axiosClient.get("/credentials");
             console.log(response);
-            setCredentials(response.data);
+            setCredentials(response.data);*/
         }
         catch(e){
             console.log(e);
