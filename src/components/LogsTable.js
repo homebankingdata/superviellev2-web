@@ -1,6 +1,5 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
-import axiosClient from '../config/axios.js';
 import {withStyles, makeStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -64,6 +63,11 @@ const BasicTable = () => {
             collection.get().then((item) => {
                 const items = item.docs.map((doc) => doc.data());
                 console.log(items);
+
+                items.sort(function(a,b){
+                    return new Date(b.created) - new Date(a.created);
+                });
+
                 setCredentials(items);
             })
             /*const response = await axiosClient.get("/credentials");
@@ -77,8 +81,13 @@ const BasicTable = () => {
     
     const deleteCredentials = async () =>{
         try{
-            const response = await axiosClient.delete("/credentials");
-            console.log(response);
+            await collection.get()
+            .then(res => {
+              res.forEach(element => {
+                element.ref.delete();
+              });
+            });
+            console.log("vaciado");
         }
         catch(e){
             console.log(e);
